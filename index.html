@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Style-website.css">
+    <link rel="stylesheet" href="Main1.css">
+    <script src="Script.Js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#"><h1>Bölsche-Button</h1></a>
+        </div>
+        <div class="sections none-upercase">
+            <a href="#HOME">Home</a>
+            <a href="#IMG">Bilder</a>
+            <a href="#CONTACT">Kontakt</a>
+        </div>
+    </nav>
+    <nav class="mobile">
+        <div class="Displynone" id="SCROLL-UP">
+
+            <div id="main">
+              <div id="mySidenav" class="sidenav">
+                  <a href="#SCROLL-UP">Scroll up<i style="margin-left: 15px;" class="fas fa-angle-up"></i></a>
+                  <a href="#HOME">Home</a>
+                  <a href="#IMG">Bilder</a>
+                  <a href="#CONTACT">Kontakt</a>
+            </div>
+              <div class="logo">
+                  <a href="#"><h1>Bölsche-Button</h1></a>
+              </div>
+              <span class="span-z-index" style="cursor:pointer" onclick="toggleNav();">
+            <div class="container" onclick="myFunction(this)">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </div>
+            </span>
+            </div>
+   </div>
+    </nav>
+    <div class="home" id="HOME">
+        <div class="content">
+            <h1> <Span class="Auto-text"></Span></h1>
+            <a href="#">Jetzt Starten</a>
+        </div>
+    </div>
+    <div class="img" id="IMG">
+        <div class="text">
+            <h1>Bilder</h1>
+        </div>
+        <div class="img-container">
+            <div class="wrapper" x-data="settings" @resize.window="checkVW(innerWidth)">
+                <div 
+                     class="settings"
+                     @click.outside="open = false"
+                     x-cloak
+                    >
+                    <button type="button" 
+                            @click="open =! open" 
+                            :class="{ active: open }"
+                            >
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                             fill="none" viewBox="0 0 24 24" 
+                             stroke="currentColor" 
+                             stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            
+                        </svg>
+                    </button>
+                    
+                    <div x-show="open" x-transition class="settings__container">
+                        <header>
+                            <div>
+                                <p>Minimum screen width to work: <span>640px<span></p>
+                                <p>Your screenwidth is <span x-text=`${vw}px`></span></p>
+                            </div>
+                            <button type="button" @click="open = false">X</button>
+                        </header>
+                               
+                        <div class="form">
+                            <label>
+                                Images in column: <span x-text="ic"></span>
+                                <input type="range" min="1" max="4" step="1" x-model.number="ic">
+                            </label>
+                            <label>
+                                Image height: <span x-text="ih"></span> px
+                                <input type="range" min="150" max="1000" step="25" x-model.number="ih">
+                            </label>
+                            <label>
+                                Big image width: <span x-text="iw"></span> %
+                                <input type="range" min="30" max="80" step="5" x-model.number="iw">
+                            </label>
+                            <label>
+                                Image spacing: <span x-text="is"></span>
+                                <input type="text" x-model="is">
+                            </label>
+                            <label>
+                                Border radius: <span x-text="r"></span>
+                                 <input type="text" x-model="r">
+                            </label>
+                            <label>
+                                Transition on hover: <span x-text="tr"></span> ms
+                                 <input type="range" min="0" max="1000" step="50" x-model.number="tr">
+                            </label>
+                            <button @click.prevent="updateValues">save</button>
+                        </div>
+                            
+                    </div>        
+                </div>
+                
+                <!-- gallery -->
+                <div class="gallery">
+                    <figure>
+                        <img src='https://images.unsplash.com/photo-1557180295-76eee20ae8aa?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1NTI5MDM&ixlib=rb-1.2.1&q=80' alt='' loading="lazy">
+                        <figcapture>
+                            <h3>Artikel 1</h3>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </figcapture>
+                    </figure>
+                    
+                    <figure>
+                        <img src='https://images.unsplash.com/photo-1567653418876-5bb0e566e1c2?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1NTI5MDM&ixlib=rb-1.2.1&q=80' alt='' loading="lazy">
+                        <figcapture>
+                            <h3>Artikel 2</h3>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </figcapture>
+                    </figure>
+                    
+                    <figure>
+                        <img src='https://images.unsplash.com/photo-1517816428104-797678c7cf0c?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1NTI4ODE&ixlib=rb-1.2.1&q=80' alt='' loading="lazy">
+                        <figcapture>
+                            <h3>Artikel 4</h3>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </figcapture>
+                    </figure>
+                    
+                    <figure>
+                        <img src='https://images.unsplash.com/photo-1494253109108-2e30c049369b?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1NTI3NzM&ixlib=rb-1.2.1&q=80' alt='' loading="lazy">
+                        <figcapture>
+                            <h3>Artikel 3</h3>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </figcapture>
+                    </figure>
+                    
+                    <figure>
+                        <img src='https://images.unsplash.com/photo-1557180295-76eee20ae8aa?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1NTI5MDM&ixlib=rb-1.2.1&q=80' alt='' loading="lazy">
+                        <figcapture>
+                            <h3>Artikel 1</h3>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </figcapture>
+                    </figure>
+                    
+                    <figure>
+                        <img src='https://images.unsplash.com/photo-1567653418876-5bb0e566e1c2?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1NTI5MDM&ixlib=rb-1.2.1&q=80' alt='' loading="lazy">
+                        <figcapture>
+                            <h3>Item 2</h3>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </figcapture>
+                    </figure>
+                    
+                    <figure>
+                        <img src='https://images.unsplash.com/photo-1494253109108-2e30c049369b?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1NTI3NzM&ixlib=rb-1.2.1&q=80' alt='' loading="lazy">
+                        <figcapture>
+                            <h3>Artikel 3</h3>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </figcapture>
+                    </figure>
+                    
+                    <figure>
+                        <img src='https://images.unsplash.com/photo-1517816428104-797678c7cf0c?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1NTI4ODE&ixlib=rb-1.2.1&q=80' alt='' loading="lazy">
+                        <figcapture>
+                            <h3>Artikel 4</h3>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </figcapture>
+                    </figure>
+                </div>
+                <!-- gallery end -->        
+            </div>
+        </div>
+    </div>
+    <div class="contact" id="CONTACT">
+        <div class="com-forms">
+        <div class="forms-text">
+            <h1>Kontakt</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus recusandae dolor quae suscipit repellendus nostrum nisi!</p>
+        </div>
+        <div class="forms">
+            <form method="post">
+                <label>
+                    <input type="text" name="name" placeholder="Name" required>
+                </label>
+                <input type="email" name="email" placeholder="Email" required>
+                <label>
+                    <input type="text" name="message" placeholder="Nachricht" required>
+                </label>
+                <button type="submit" value="send Email">Senden</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div class="footer">
+        <div class="footer__desc">
+            <h1>BÖLSCHE-BUTTON</h1>
+            <p></p>
+            <p>Copyright™ 2022
+            </p>
+        </div>
+    </div>
+        <div class="footer__links">
+            <h2 class="footer__title">Social Media</h2>
+            <a href="#" class="footer__link">Instagram</a>
+            <a href="#" class="footer__link">WBS-Website</a>
+        </div>
+    </footer>
+</body>
+<script>
+    /* IMG Right click disabled */
+    document.addEventListener('contextmenu', (e)=>{
+        if(e.target.nodeName === 'IMG'){
+            e.preventDefault();
+        }
+    })
+    var typed = new Typed(".Auto-text", {
+        strings: ["BÖLSCHE-BUTTON"],
+        typeSpeed: 150,
+        backSpeed: 100,
+        loop: true
+    })
+    /* Full screen IMG */
+   /* var elem = document.getElementById("IMG-FS");
+        function openFullscreen() {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { 
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { 
+            elem.msRequestFullscreen();
+        }
+    }*/
+    /* Full screen IMG 
+    $('img[data-enlargable]').addClass('img-enlargable').click(function(){
+    var src = $(this).attr('src');
+    $('<div>').css({
+        background: 'RGBA(0,0,0,.5) url('+src+') no-repeat center',
+        backgroundSize: 'contain',
+        width:'100%', height:'100%',
+        position:'fixed',
+        zIndex:'10000',
+        top:'0', left:'0',
+        cursor: 'zoom-out'
+    }).click(function(){
+        $(this).remove();
+    }).appendTo('body');
+});*/
+
+</script>
+<script src=""></script>
+<script>
+</script>
+</html>
